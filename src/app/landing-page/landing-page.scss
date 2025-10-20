@@ -1,0 +1,112 @@
+@use '../../app-theme' as * ;
+
+header {
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: $blue;
+    display: flex;
+    font-size: 18px;
+    height: 5vh;
+    justify-content: flex-start;
+    max-height: 64px;
+    padding-left: 32px;
+}
+
+.headline {
+    padding-left: 32px;
+    h1 {
+        font-size: 56px;
+    }
+}
+
+main {
+    display: flex;
+    padding-left: 32px;
+    padding-right: 32px;
+    height: 75vh;
+    section {
+        width: 50%;;
+    }
+    
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    input {
+        display: none;
+    }
+
+    button {
+        background-color: $blue;
+        border: none;
+        border-radius: $border-radius;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 16px;
+        padding: 6px 12px;
+        text-align: center;
+        text-decoration: none;
+        width: 500px;
+    }
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    border-radius: $border-radius;
+    border-style: dashed;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    width: 500px;
+  }
+
+
+.example-photos {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.img-one{
+    border-radius: $border-radius;
+    position: absolute;
+    top: 25%;
+    width: 500px;
+    z-index: 3;
+}
+
+.img-two{
+    border-radius: $border-radius;
+    position: absolute;
+    width: 500px;
+    top: 20%;
+    left: 10%;
+    z-index: 2;
+}
+
+.img-three{
+    border-radius: $border-radius;
+    position: absolute;
+    width: 500px;
+    top: 10%;
+    left: 20%;
+    z-index: 1;
+}
