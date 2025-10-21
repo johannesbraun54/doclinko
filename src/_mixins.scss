@@ -1,0 +1,18 @@
+@use './_app-theme' as * ;
+
+@mixin buttonStyle() {
+    background-color: $blue;
+    border: none;
+    border-radius: $border-radius;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    padding: 12px 12px;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+        background-color: $blue-secondary;
+    }
+}
