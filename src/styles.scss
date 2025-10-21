@@ -1,8 +1,16 @@
 @use './_app-theme' as * ;
 
+// @font-face {
+//     font-family: 'Alpino Thin';
+//     src: url('fonts/Alpino-Thin.woff2') format('woff2');
+//     font-weight: 100; /* Thin */
+//     font-style: normal;
+//     font-display: swap; /* für bessere Ladeperformance */
+//   }
+
 body {
     box-sizing: border-box;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Alpino Thin', sans-serif;
     margin: 0;
     background-color: $background-color-primary;
     color: white;
