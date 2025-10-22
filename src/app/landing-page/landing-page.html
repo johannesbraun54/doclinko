@@ -2,7 +2,7 @@
     <span>Doclinko</span>
     <button>Login</button>
 </header>
-<main>
+<main [style]="{'opacity': mainContentIsLoaded() ? '1' : '0'}">
     <section class="headline">
         <h1>Share your photos with everyone</h1>
         <div>
@@ -31,9 +31,9 @@
         </section>
         <section class="right-section">
             <div class="example-photos">
-                <img [style]="{'transform': pageLoaded ? 'translateX(0%)' : 'translateX(200%)' }" id="imageOne" class="img-one" src="images/city.jpg" alt="city photo">
-                <img [style]="{'transform': pageLoaded ? 'translateX(0%)' : 'translateX(200%)' }" class="img-two" src="images/nature.jpg" alt="nature photo">
-                <img [style]="{'transform': pageLoaded ? 'translateX(0%)' : 'translateX(200%)' }" class="img-three" src="images/laptop.jpg" alt="laptop photo">
+                <img [style]="{'transform': imageOneIsLoaded() ? 'translateX(0%)' : 'translateX(200%)' }" id="imageOne" class="img-one" src="images/city.jpg" alt="city photo">
+                <img [style]="{'transform': imageTwoIsLoaDded() ? 'translateX(0%)' : 'translateX(200%)' }" class="img-two" src="images/nature.jpg" alt="nature photo">
+                <img [style]="{'transform': imageThreeIsLoaded() ? 'translateX(0%)' : 'translateX(200%)' }" class="img-three" src="images/laptop.jpg" alt="laptop photo">
             </div>
         </section>
     </section>

@@ -14,7 +14,8 @@ body {
     margin: 0;
     background-color: $background-color-primary;
     color: white;
-}
+    overflow-x: hidden;
+  }
 
 p {
   margin-block-start: 0;
