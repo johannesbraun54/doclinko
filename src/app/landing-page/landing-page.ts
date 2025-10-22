@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-landing-page',
@@ -6,6 +6,16 @@ import { Component } from '@angular/core';
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss'
 })
-export class LandingPage {
+export class LandingPage implements OnInit {
+
+  pageLoaded: boolean = true;
+
+  constructor() {}
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.pageLoaded = true;
+    }, 500)
+  }
 
 }

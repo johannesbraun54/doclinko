@@ -1,5 +1,11 @@
 @use './_app-theme' as * ;
 
+@mixin dFlex($jc: center, $ai: center) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+  }
+
 @mixin buttonStyle() {
     background-color: $blue;
     border: none;
