@@ -21,19 +21,27 @@
     <section class="upload-section">
         <section class="left-section">
             <form onsubmit="" class="file-upload">
-                <label for="file-upload" class="custom-file-upload">
+                <label for="fileUpload" class="custom-file-upload">
                     Upload Photos
                 </label>
-                <input id="file-upload" type="file" />
+                <input (change)="processUploadedFiles()" #fileUpload id="fileUpload" type="file" multiple />
                 <button>create doclink</button>
             </form>
-
+            <div class="uploaded-files">
+                @for (file of uploadedFiles; track file ; let i=$index) {
+                    <div class="file-detail">
+                        <img src="images/cross.svg" alt="white cross" (click)="removeFileFromUploads(i)">
+                        <img [src]="file.src" alt="uploaded photo">
+                    </div>
+                }
+            </div>
+            
         </section>
         <section class="right-section">
             <div class="example-photos">
-                <img [style]="{'transform': imageOneIsLoaded() ? 'translateX(0%)' : 'translateX(200%)' }" id="imageOne" class="img-one" src="images/city.jpg" alt="city photo">
-                <img [style]="{'transform': imageTwoIsLoaDded() ? 'translateX(0%)' : 'translateX(200%)' }" class="img-two" src="images/nature.jpg" alt="nature photo">
-                <img [style]="{'transform': imageThreeIsLoaded() ? 'translateX(0%)' : 'translateX(200%)' }" class="img-three" src="images/laptop.jpg" alt="laptop photo">
+                <img [style]="{'transform': imageOneIsLoaded() ? 'translateX(0%)' : 'translateX(200%)' , 'opacity':  imageOneIsLoaded() ? '1' : '0'}" id="imageOne" class="img-one" src="images/city.jpg" alt="city photo">
+                <img [style]="{'transform': imageTwoIsLoaDded() ? 'translateX(0%)' : 'translateX(200%)', 'opacity':  imageTwoIsLoaDded() ? '1' : '0'}" class="img-two" src="images/nature.jpg" alt="nature photo">
+                <img [style]="{'transform': imageThreeIsLoaded() ? 'translateX(0%)' : 'translateX(200%)','opacity':  imageThreeIsLoaded() ? '1' : '0' }" class="img-three" src="images/laptop.jpg" alt="laptop photo">
             </div>
         </section>
     </section>

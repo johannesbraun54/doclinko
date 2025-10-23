@@ -1,4 +1,6 @@
-import { Component, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, OnInit, signal, ViewChild, viewChild, WritableSignal } from '@angular/core';
+import { uploadFile } from '../models/interfaces/upload-files.model';
+
 
 @Component({
   selector: 'app-landing-page',
@@ -6,7 +8,13 @@ import { Component, OnInit, signal, WritableSignal } from '@angular/core';
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss'
 })
+
 export class LandingPage implements OnInit {
+
+  @ViewChild('fileUpload') fileUpload: any;
+  @ViewChild('uploadedImage') uploadedImage: any;
+
+  uploadedFiles: uploadFile[] = [];
 
   mainContentIsLoaded = signal<true | false>(false);
   imageOneIsLoaded = signal<true | false>(false);
@@ -39,6 +47,23 @@ export class LandingPage implements OnInit {
     setTimeout(() => {
       signal.set(true);
     }, delay)
+  }
+
+  /**
+   * Adds src property to uploaded files for previewing and pushs the edit file to uploadedFiles array.
+   */
+  processUploadedFiles() {
+
+    for (let i = 0; i < this.fileUpload.nativeElement.files.length; i++) {
+      const file = this.fileUpload.nativeElement.files[i];
+      file['src'] = URL.createObjectURL(file); 
+      this.uploadedFiles.push(file);
+    }
+
+  }
+
+  removeFileFromUploads(i : number) {
+    this.uploadedFiles.splice(i, 1);
   }
 
 }

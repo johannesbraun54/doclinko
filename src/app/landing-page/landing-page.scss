@@ -61,6 +61,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .right-section {
@@ -100,6 +101,33 @@ main {
         background-color: $background-color-secondary;
     }
   }
+
+  .uploaded-files {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+
+    img {
+        border-radius: 2px;
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+    }
+  }
+
+  .file-detail {
+    position: relative;
+
+    img:first-child {
+        position: absolute;
+        top: -9px;
+        right: -9px;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+  }
+
 
 
 .example-photos {
