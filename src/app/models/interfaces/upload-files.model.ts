@@ -2,6 +2,6 @@
  * Model for uploaded files
  */
 export interface uploadFile {
-  file: File;
+  file?: File;
   src?: string;
 }

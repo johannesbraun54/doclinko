@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, ViewChild, viewChild, WritableSignal } from '@angular/core';
+import { Component, ElementRef, OnInit, signal, ViewChild, viewChild, WritableSignal } from '@angular/core';
 import { uploadFile } from '../models/interfaces/upload-files.model';
 
 
@@ -11,8 +11,7 @@ import { uploadFile } from '../models/interfaces/upload-files.model';
 
 export class LandingPage implements OnInit {
 
-  @ViewChild('fileUpload') fileUpload: any;
-  @ViewChild('uploadedImage') uploadedImage: any;
+  @ViewChild('fileUpload') fileUpload!: ElementRef<HTMLInputElement>;
 
   uploadedFiles: uploadFile[] = [];
 
@@ -53,15 +52,22 @@ export class LandingPage implements OnInit {
    * Adds src property to uploaded files for previewing and pushs the edit file to uploadedFiles array.
    */
   processUploadedFiles() {
+    const nativeElement = this.fileUpload?.nativeElement;
+    if (!nativeElement?.files) return;
 
-    for (let i = 0; i < this.fileUpload.nativeElement.files.length; i++) {
-      const file = this.fileUpload.nativeElement.files[i];
-      file['src'] = URL.createObjectURL(file); 
-      this.uploadedFiles.push(file);
+    for (let i = 0; i < nativeElement.files.length; i++) {
+      const file = nativeElement.files[i];
+      let src = URL.createObjectURL(file); 
+      const uploadFile: uploadFile = { file: file, src: src };
+      this.uploadedFiles.push(uploadFile);
     }
 
   }
 
+  /**
+   * Removes a file from the uploadedFiles array.
+   * @param i Index of the file to remove from uploadedFiles array.
+   */
   removeFileFromUploads(i : number) {
     this.uploadedFiles.splice(i, 1);
   }
