@@ -20,20 +20,29 @@
     </section>
     <section class="upload-section">
         <section class="left-section">
-            <form onsubmit="" class="file-upload">
-                <label for="fileUpload" class="custom-file-upload">
-                    Upload Photos
-                </label>
-                <input (change)="processUploadedFiles()" #fileUpload id="fileUpload" type="file" multiple />
-                <button>create doclink</button>
-            </form>
-            <div class="uploaded-files">
-                @for (file of uploadedFiles; track file ; let i=$index) {
-                    <div class="file-detail">
-                        <img src="images/cross.svg" alt="white cross" (click)="removeFileFromUploads(i)">
-                        <img [src]="file.src" alt="uploaded photo">
-                    </div>
+            <div class="file-container">
+                <form onsubmit="" class="file-upload">
+                    <label for="fileUpload" class="custom-file-upload">
+                        Upload Photos
+                    </label>
+                    <input (change)="processUploadedFiles()" #fileUpload id="fileUpload" type="file" multiple />
+                    <button>create doclink</button>
+                </form>
+                @if (uploadedFiles.length > 0) {
+                    @if (uploadedFiles.length === 1) {
+                        <p>Uploaded 1 file</p>
+                    } @else {
+                        <p>Uploaded {{uploadedFiles.length}} files</p>
+                    }
                 }
+                <div class="uploaded-files">
+                    @for (file of uploadedFiles; track file ; let i=$index) {
+                        <div class="file-detail">
+                            <img src="images/cross.svg" alt="white cross" (click)="removeFileFromUploads(i)">
+                            <img [src]="file.src" alt="uploaded photo">
+                        </div>
+                    }
+                </div>
             </div>
             
         </section>

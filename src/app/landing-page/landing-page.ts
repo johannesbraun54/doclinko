@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, signal, ViewChild, viewChild, WritableSignal } from '@angular/core';
+import { Component, ElementRef, OnInit, signal, ViewChild, viewChild, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
 import { uploadFile } from '../models/interfaces/upload-files.model';
 
 
@@ -6,7 +6,8 @@ import { uploadFile } from '../models/interfaces/upload-files.model';
   selector: 'app-landing-page',
   imports: [],
   templateUrl: './landing-page.html',
-  styleUrl: './landing-page.scss'
+  styleUrl: './landing-page.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class LandingPage implements OnInit {
@@ -20,6 +21,8 @@ export class LandingPage implements OnInit {
   imageTwoIsLoaDded = signal<true | false>(false);
   imageThreeIsLoaded = signal<true | false>(false);
   
+  count: number = 0;
+
   constructor() {}
 
   ngOnInit(): void {
