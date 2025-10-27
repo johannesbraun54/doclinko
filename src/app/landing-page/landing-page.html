@@ -22,34 +22,54 @@
         <section class="left-section">
             <div class="file-container">
                 <form onsubmit="" class="file-upload">
-                    <label for="fileUpload" class="custom-file-upload">
-                        Upload Photos
-                    </label>
-                    <input (change)="processUploadedFiles()" #fileUpload id="fileUpload" type="file" multiple />
-                    <button>create doclink</button>
-                </form>
-                @if (uploadedFiles.length > 0) {
-                    @if (uploadedFiles.length === 1) {
-                        <p>Uploaded 1 file</p>
-                    } @else {
-                        <p>Uploaded {{uploadedFiles.length}} files</p>
-                    }
-                }
-                <div class="uploaded-files">
-                    @for (file of uploadedFiles; track file ; let i=$index) {
-                        <div class="file-detail">
-                            <img src="images/cross.svg" alt="white cross" (click)="removeFileFromUploads(i)">
-                            <img [src]="file.src" alt="uploaded photo">
+
+                    @if (uploadedFiles.length === 0) {
+                        <label for="fileUpload" class="custom-file-upload">
+                            click to upload photos
+                        </label>
+                        <input (change)="processUploadedFiles()" #fileUpload id="fileUpload" type="file" multiple />
+                    } @else {                          
+                        <div class="input-fields">
+                            <input required type="text" placeholder="your name" name="sender"/>
+                            <input required type="email" placeholder="recipient email" name="recipient"/>
+                            <textarea placeholder="your message" name="message"></textarea>
                         </div>
                     }
-                </div>
+
+
+                    @if (uploadedFiles.length > 0) {
+                        @if (uploadedFiles.length === 1) {
+                            <p>Uploaded 1 file</p>
+                        } @else {
+                            <p>Uploaded {{uploadedFiles.length}} files</p>
+                        }
+                    }
+                    @if (uploadedFiles.length > 0) {
+                        <div class="uploaded-files">
+                            <div>
+                                <label for="fileUpload" class="additional-file-upload">
+                                    <span>+</span>
+                                </label>
+                                <input (change)="processUploadedFiles()" #fileUpload id="fileUpload" type="file" multiple />
+                            </div>
+                            @for (file of uploadedFiles; track file ; let i=$index) {
+                                <div class="file-detail">
+                                    <img src="images/cross.svg" alt="white cross" (click)="removeFileFromUploads(i)">
+                                    <img [src]="file.src" alt="uploaded photo">
+                                </div>
+                            }
+                        </div>
+                    }
+                    <button [disabled]="uploadedFiles.length < 1">send doclink</button>
+                </form>
+
             </div>
             
         </section>
         <section class="right-section">
             <div class="example-photos">
-                <img [style]="{'transform': imageOneIsLoaded() ? 'translateX(0%)' : 'translateX(200%)' , 'opacity':  imageOneIsLoaded() ? '1' : '0'}" id="imageOne" class="img-one" src="images/city.jpg" alt="city photo">
-                <img [style]="{'transform': imageTwoIsLoaDded() ? 'translateX(0%)' : 'translateX(200%)', 'opacity':  imageTwoIsLoaDded() ? '1' : '0'}" class="img-two" src="images/nature.jpg" alt="nature photo">
+                <img [style]="{'transform': imageOneIsLoaded() ? 'translateX(0%)' : 'translateX(200%)' , 'opacity':  imageOneIsLoaded() ? '1' : '0'}" id="imageOne" class="img-one" src="images/nature.jpg" alt="city photo">
+                <img [style]="{'transform': imageTwoIsLoaDded() ? 'translateX(0%)' : 'translateX(200%)', 'opacity':  imageTwoIsLoaDded() ? '1' : '0'}" class="img-two" src="images/city.jpg" alt="nature photo">
                 <img [style]="{'transform': imageThreeIsLoaded() ? 'translateX(0%)' : 'translateX(200%)','opacity':  imageThreeIsLoaded() ? '1' : '0' }" class="img-three" src="images/laptop.jpg" alt="laptop photo">
             </div>
         </section>

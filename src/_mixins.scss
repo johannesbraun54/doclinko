@@ -19,8 +19,40 @@
     text-decoration: none;
     transition: background-color 0.3s ease-in-out;
     &:hover {
-        background-color: $blue-secondary;
+        background-color: $blue-dark;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    &:disabled {
+        background-color: $blue-light;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+}
+
+@mixin InputStyle() {
+    border-radius: $border-radius;
+    padding: 12px 12px;
+    border: 1px solid white;
+    height: 48px;
+    width: 360px;
+    background: $background-color-primary;
+    color: white;
+    font-size: 18px;
+    font-family: 'alpino-thin', sans-serif;
+
+    &::placeholder {
+        color: white;
+    }
+
+    &:focus {
+        outline: none;
+        border: 1px solid $blue-light;
+
+    }
+
+    &:hover {
+        background-color: $background-color-secondary;
     }
 }
 
