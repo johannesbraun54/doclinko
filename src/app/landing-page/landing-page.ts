@@ -1,10 +1,11 @@
 import { Component, ElementRef, OnInit, signal, ViewChild, viewChild, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
 import { uploadFile } from '../models/interfaces/upload-files.model';
+import {RouterLink} from '@angular/router';
 
 
 @Component({
   selector: 'app-landing-page',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -20,7 +21,7 @@ export class LandingPage implements OnInit {
   imageOneIsLoaded = signal<true | false>(false);
   imageTwoIsLoaDded = signal<true | false>(false);
   imageThreeIsLoaded = signal<true | false>(false);
-  
+
   count: number = 0;
 
   constructor() {}
@@ -60,6 +61,8 @@ export class LandingPage implements OnInit {
 
     for (let i = 0; i < nativeElement.files.length; i++) {
       const file = nativeElement.files[i];
+      console.log(file);
+      
       let src = URL.createObjectURL(file); 
       const uploadFile: uploadFile = { file: file, src: src };
       this.uploadedFiles.push(uploadFile);
